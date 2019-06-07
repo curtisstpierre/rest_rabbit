@@ -133,6 +133,7 @@ func IssueToken(w http.ResponseWriter, r *http.Request) {
 		tokens.Push(token)
 		log.Printf(" [x] Authorized %s", token)
 		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(token))
 	} else {
 		w.WriteHeader(http.StatusForbidden)
 	}
