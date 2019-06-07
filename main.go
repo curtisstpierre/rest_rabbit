@@ -34,7 +34,6 @@ type Alert struct {
 func CreateAlert(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	auth := r.Header.Get("X-Vault-Auth")
-	log.Printf(" [x] Tokens %s", tokens)
 	if tokens.Search(String(auth)) == nil {
 		log.Printf(" [x] Token not found")
 		w.WriteHeader(http.StatusForbidden)
