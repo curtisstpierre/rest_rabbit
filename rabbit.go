@@ -21,12 +21,6 @@ type Message struct {
 // CreateMessage a new item
 func CreateMessage(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	auth := r.Header.Get("X-Vault-Auth")
-	if tokens.Search(String(auth)) == nil {
-		log.Printf(" [x] Token not found")
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
 	if len(params["id"]) > 0 {
 		var message Message
 		_ = json.NewDecoder(r.Body).Decode(&message)
